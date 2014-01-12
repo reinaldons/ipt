@@ -1,11 +1,5 @@
-<?xml version="1.0"?>
-<definitions name="HelloWorld"
-        targetNamespace="http://example.org"
-        xmlns:tns="http://example.org"
-        xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
-        xmlns="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        >
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://best.dog" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://dog.best/" name="calculamilhagem" targetNamespace="http://best.dog">
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      TYPE DEFINITION - List of types participating in this BPEL process 
@@ -13,12 +7,14 @@
      but you can define or import any XML Schema type and use them as part 
      of the message types.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="MilhagemLinkType">
+    <plnk:role name="MilhagemLinkRole" portType="wsdl:Milhagem"/>
+  </plnk:partnerLinkType>
+    <import location="Milhagem.wsdl" namespace="http://dog.best/"/>
     <types>
-        <schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
-                targetNamespace="http://example.org" 
-                xmlns="http://www.w3.org/2001/XMLSchema">
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://best.dog">
 
-            <element name="HelloWorldRequest">
+            <element name="calculamilhagemRequest">
                 <complexType>
                     <sequence>
                         <element name="input" type="string"/>
@@ -26,7 +22,7 @@
                 </complexType>
             </element>
 
-            <element name="HelloWorldResponse">
+            <element name="calculamilhagemResponse">
                 <complexType>
                     <sequence>
                         <element name="result" type="string"/>
@@ -41,11 +37,11 @@
      MESSAGE TYPE DEFINITION - Definition of the message types used as 
      part of the port type defintions
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <message name="HelloWorldRequestMessage">
-        <part name="payload" element="tns:HelloWorldRequest"/>
+    <message name="calculamilhagemRequestMessage">
+        <part element="tns:calculamilhagemRequest" name="payload"/>
     </message>
-    <message name="HelloWorldResponseMessage">
-        <part name="payload" element="tns:HelloWorldResponse"/>
+    <message name="calculamilhagemResponseMessage">
+        <part element="tns:calculamilhagemResponse" name="payload"/>
     </message>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -53,18 +49,18 @@
      a logical service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
 
-    <!-- portType implemented by the HelloWorld BPEL process -->
-    <portType name="HelloWorld">
+    <!-- portType implemented by the calculamilhagem BPEL process -->
+    <portType name="calculamilhagem">
         <operation name="process">
-            <input  message="tns:HelloWorldRequestMessage" />
-            <output message="tns:HelloWorldResponseMessage"/>
+            <input message="tns:calculamilhagemRequestMessage"/>
+            <output message="tns:calculamilhagemResponseMessage"/>
         </operation>
     </portType>   
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      PARTNER LINK TYPE DEFINITION
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <plnk:partnerLinkType name="HelloWorld">
-        <plnk:role name="HelloWorldProvider" portType="tns:HelloWorld"/>
+    <plnk:partnerLinkType name="calculamilhagem">
+        <plnk:role name="calculamilhagemProvider" portType="tns:calculamilhagem"/>
     </plnk:partnerLinkType>
     
 
@@ -72,17 +68,15 @@
      BINDING DEFINITION - Defines the message format and protocol details
      for a web service.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <binding name="HelloWorldBinding" type="tns:HelloWorld">
-    	<soap:binding style="document"
-    		transport="http://schemas.xmlsoap.org/soap/http" />
+    <binding name="calculamilhagemBinding" type="tns:calculamilhagem">
+    	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     	<operation name="process">
-    		<soap:operation
-    			soapAction="http://example.org/process" />
+    		<soap:operation soapAction="http://best.dog/process"/>
     		<input>
-    			<soap:body use="literal" />
+    			<soap:body use="literal"/>
     		</input>
     		<output>
-    			<soap:body use="literal" />
+    			<soap:body use="literal"/>
     		</output>
     	</operation>
     </binding>
@@ -91,9 +85,9 @@
      SERVICE DEFINITION - A service groups a set of ports into
      a service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <service name="HelloWorldService">
-    	<port name="HelloWorldPort" binding="tns:HelloWorldBinding">
-    		<soap:address location="http://localhost:8080/ode/processes/HelloWorld" />
+    <service name="calculamilhagemService">
+    	<port binding="tns:calculamilhagemBinding" name="calculamilhagemPort">
+    		<soap:address location="http://localhost:8080/ode/processes/calculamilhagem"/>
     	</port>
     </service>
 </definitions>

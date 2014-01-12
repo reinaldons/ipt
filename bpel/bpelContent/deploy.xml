@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:example.org="http://example.org">
-  <process name="example.org:HelloWorld">
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:best.dog="http://best.dog" xmlns:dog.best="http://dog.best/">
+  <process name="best.dog:calculamilhagem">
     <active>true</active>
     <retired>false</retired>
     <process-events generate="all"/>
     <provide partnerLink="client">
-      <service name="example.org:HelloWorldService" port="HelloWorldPort"/>
+      <service name="best.dog:calculamilhagemService" port="calculamilhagemPort"/>
     </provide>
+    <invoke partnerLink="MilhagemLink">
+      <service name="dog.best:MilhagemImplService" port="MilhagemImplPort"/>
+    </invoke>
   </process>
 </deploy>

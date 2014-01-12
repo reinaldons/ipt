@@ -39,3 +39,20 @@ ID,Operações,,Mensagem,Entrada,Saída,
 ,central_calcula_metas,,,,,
 ,central_planejamento_logistico,,,,,
 |====================================
+
+
+==== Requisitos
+
+Instalar:
+* apache tomcat 7x
+* ode.war
+* h2-1.3.170.jar (jdbc:h2:bpm/src/test/resources/activiti)
+* ws de teste (mvn archetype:generate -Dfilter=org.apache.cxf.archetype:)
+
+Copiar o dir. bpelContent para ode/WEB-INF/processes
+
+A partir de um cliente ws (WS Explorer ou SOAP UI) invocar o "calculamilhagem.process" informando o CPF 
+
+IMPORTANT: Oracle JDK 1.7
+
+Opcional: Activiti Diagram Editor (Eclipse)
