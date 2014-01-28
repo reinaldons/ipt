@@ -1,0 +1,61 @@
+=== ipt-activiti
+
+Projeto final de SOA - IPT
+
+[width="70%",format="csv"]
+|====================================
+ID,Funcionalidade,
+1,Consulta de milhagem,
+2,Consulta estoque da filial,
+3,"Calculo de desconto por ""milhas""",
+4,Baixa do estoque,
+5,Baixa do pedido (meta),
+6,Consulta estoque de todas filiais,
+7,Consulta estoque da central,
+8,Atualiza estoque da central,
+9,Atualiza estoque das filiais,
+10,Calcula metas das filiais,
+11,Gera relatorios,
+12,Avalia compra fornecedor,
+13,Planejamento Logistico,
+14,Efetua compra fornecedor,
+15,Transfere produtos filial,
+|====================================
+
+[width="70%",format="csv"]
+|====================================
+ID,Operações,,Entrada,Saída,
+,franquia_recebe_pedido,,"cpf_cliente,cod_opcao","produto,desconto",
+,franquia_calcula_milhagem,,cpf_cliente,"true,false",
+,franquia_calcula_estoque,,cod_opcao,"true,false",
+,franquia_calcula_desconto,,"cpf_cliente,cod_opcao",valor,
+,franquia_baixa_estoque,,cod_opcao,,(atualiza total de itens)
+,franquia_baixa_pedido,,cod_opcao,,(atualiza faturamento)
+,franquia_devolve_desconto,,"cpf_cliente,opcao,valor",valor,
+,central_solicita_reposicao_filial,,"cod_item,qtde",total_item_filial,
+,central_solicita_reposicao_central,,,,
+,central_seleciona_fornecedor,,,,
+,central_gera_relatorio,,,"[cod_franquia,vendas_mes,estoque_bebida,estoque_dog]*",
+,central_calcula_metas,,,,
+,central_planejamento_logistico,,,,
+|====================================
+
+
+==== Requisitos
+
+.Download:
+* apache tomcat 7x
+* ode.war
+* h2-1.3.170.jar (jdbc:h2:bpm/src/test/resources/activiti)
+
+.Procedimento:
+* Instalar o Eclipse JEE com o plugin do BPEL (http://download.eclipse.org/bpel/site/). Opcionalmente, instale o plugin do BPM (Activiti Diagram Editor)
+* Iniciar o H2 (java -jar h2.jar)
+* Iniciar o tomcat (bin/catalina.sh start)
+* Iniciar os webservices (mvn package tomcat7:run-war)
+* Copiar o ode.war para o tomcat
+* Copiar o dir. bpelContent para ode/WEB-INF/processes
+
+A partir de um cliente ws (WS Explorer ou SOAP UI) invocar o "calculamilhagem.process" informando o CPF:
+
+http://localhost:8080/ode/processes/calculamilhagem?wsdl

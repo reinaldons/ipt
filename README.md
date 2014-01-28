@@ -1,4 +1,4 @@
-ipt-activiti
+ipt
 ============
 
-Projeto final de SOA - IPT
+Projetos do curso do IPT
