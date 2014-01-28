@@ -56,4 +56,6 @@ ID,Operações,,Entrada,Saída,
 * Copiar o ode.war para o tomcat
 * Copiar o dir. bpelContent para ode/WEB-INF/processes
 
-A partir de um cliente ws (WS Explorer ou SOAP UI) invocar o "calculamilhagem.process" informando o CPF 
+A partir de um cliente ws (WS Explorer ou SOAP UI) invocar o "calculamilhagem.process" informando o CPF:
+
+http://localhost:8080/ode/processes/calculamilhagem?wsdl
