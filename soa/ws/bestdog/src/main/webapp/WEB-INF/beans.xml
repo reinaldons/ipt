@@ -12,5 +12,10 @@
           id="milhagem" 
           implementor="best.dog.MilhagemImpl" 
           address="/Milhagem" />
+
+        <jaxws:endpoint 
+          id="estoque" 
+          implementor="best.dog.EstoqueImpl" 
+          address="/Estoque" />
           
 </beans>
