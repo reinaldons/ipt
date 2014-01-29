@@ -1,27 +1,12 @@
 #!/bin/bash
-# BEGIN_CONF
 APP_DIR=ws/bestdog
-JAVA_VERSION=java-7-oracle
-JAVA_DIR=/usr/lib/jvm
-MVN_DIR=/opt/java/maven
-# END_CONF
 
-ls $APP_DIR/
 if [ $? -ne 0 ]; then
 	echo "APP_DIR not found"
 	exit -1
 fi
 
-# BEGIN_JAVA_CONF
-JAVA_VERSION=java-7-oracle
-JAVA_DIR=/usr/lib/jvm
-MVN_DIR=/opt/java/maven
-# END_JAVA_CONF
-
-SCRIPTS_PATH="$PWD/scripts"
-
-source $SCRIPTS_PATH/_jdk.sh $JAVA_VERSION $JAVA_DIR $MVN_DIR
-
 cd $APP_DIR
 # START_SCRIPT
-mvn clean package tomcat7:run-war
+$MVN_DIR/bin/mvn clean package tomcat7:run-war
+
