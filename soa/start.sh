@@ -1,8 +1,4 @@
 #!/bin/bash
-#1. cd ws && mvn clean install
-#2. cd ws && ws.sh h2
-#3. cd bpel && mvn clean package tomcat7:run
-#4. mvn tomcat7:deploy -DwarFile=ode/ode-1.3.6.war
 
 # BEGIN_JAVA_CONF
 JAVA_VERSION=java-7-oracle
@@ -34,3 +30,9 @@ open_tab ws $SCRIPTS_PATH
 
 echo "STARTING ODE..."
 open_tab ode $SCRIPTS_PATH
+
+
+firefox -new-tab http://localhost:8181/bestdog/
+firefox -new-tab http://localhost:8080/bpel/
+
+./bpel/bpel.sh

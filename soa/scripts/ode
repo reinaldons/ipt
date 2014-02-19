@@ -5,6 +5,7 @@ TMP_ODE_DIR=/tmp/_ode
 JAVA_VERSION=java-7-oracle
 JAVA_DIR=/usr/lib/jvm
 MVN_DIR=/opt/java/maven
+ODE_WAR=$APP_DIR/ode/ode-1.3.6.zip
 # END_CONF
 
 ls $APP_DIR/
@@ -23,11 +24,12 @@ SCRIPTS_PATH="$PWD/scripts"
 
 source $SCRIPTS_PATH/_jdk.sh $JAVA_VERSION $JAVA_DIR $MVN_DIR
 
-cd $APP_DIR
 # START_SCRIPT
 
 rm -ri $TMP_ODE_DIR
 mkdir $TMP_ODE_DIR
-unzip ode/ode-1.3.6.war -d $TMP_ODE_DIR
+unzip $ODE_WAR -d $TMP_ODE_DIR
+
+cd $APP_DIR
 
 mvn tomcat7:run-war -Dmaven.tomcat.warDirectory=$TMP_ODE_DIR

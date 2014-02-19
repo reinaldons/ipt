@@ -1,12 +1,12 @@
 #!/bin/bash
 # BEGIN_CONF
 APP_DIR=ws
-DB=/tmp/h2_bestdog
 SQL_SCRIPT=bestdog/src/test/resources/db.sql
 H2_DIR=bestdog/target/bestdog-1.0-SNAPSHOT/WEB-INF/lib/
 JAVA_VERSION=java-7-oracle
 JAVA_DIR=/usr/lib/jvm
 MVN_DIR=/opt/java/maven
+DB=~/test
 # END_CONF
 
 ls $APP_DIR/
