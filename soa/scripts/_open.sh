@@ -7,7 +7,8 @@ open_tab() {
  CMD_PARSED=`echo $CMD | sed "s#V_CMD#$2/$1#"`
  TERMINAL_CMD_PARSED=`echo $TERMINAL_CMD | sed "s/V_TITLE/$1/"`
 
- read -p "[$TERMINAL_CMD \"$CMD_PARSED\"] (press ENTER to confirm)"
+ echo "[$TERMINAL_CMD \"$CMD_PARSED\"]"
+ read -p "(press ENTER to confirm)"
  $TERMINAL_CMD_PARSED "$CMD_PARSED"
 
 }

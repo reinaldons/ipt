@@ -18,6 +18,19 @@ exit -1
 
 fi
 
+cd bpel
+
+mvn package
+
+cd ..
+
+cd ws/bestdog
+
+mvn package
+
+cd ..
+cd ..
+
 source $SCRIPTS_PATH/_open.sh
 
 echo ""
@@ -32,7 +45,7 @@ echo "STARTING ODE..."
 open_tab ode $SCRIPTS_PATH
 
 
-firefox -new-tab http://localhost:8181/bestdog/
-firefox -new-tab http://localhost:8080/bpel/
+#firefox -new-tab http://localhost:8181/bestdog/ &
+#firefox -new-tab http://localhost:8080/bpel/ &
 
-./bpel/bpel.sh
+#/bpel/bpel.sh
