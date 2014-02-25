@@ -751,7 +751,7 @@
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.1</version>
 	<configuration>
-        <path>/bpel</path>
+        <path>/ode</path>
         <contextReloadable>true</contextReloadable>
         </configuration>
       </plugin>
