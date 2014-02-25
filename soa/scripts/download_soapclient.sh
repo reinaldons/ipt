@@ -7,10 +7,10 @@ cd $JAVA_HOME
 sudo ln -s jre jdk
 cd /tmp
 mkdir _soapclient
-cd soapclient
+cd _soapclient
 wget http://demo.360works.com/wsm/SOAPClient.zip
 unzip SOAPClient.zip
-rm SOAPClient.zip
+rm -i SOAPClient.zip
 fi
 cd /tmp/soapclient/build
 java -Djava.home=$JAVA_HOME/jdk/ -cp *.jar -jar SOAPClient.jar &
